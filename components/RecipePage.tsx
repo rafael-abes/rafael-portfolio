@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { categories, ingredientById, projectById, SHOW_DRAFT_MARKERS, type Project } from "@/lib/data";
 import { Annotation } from "./Annotation";
 import { useBook } from "./BookState";
-import { ProjectArchitecture } from "./ProjectArchitecture";
+// import { ProjectArchitecture } from "./ProjectArchitecture";
 
 const tabs = [
   { id: "ingredients", label: "Ingredients" },
@@ -110,7 +110,7 @@ function DishTab({ project }: { project: Project }) {
         </div>
       )}
 
-      {project.id === "ecoguard" && <ProjectArchitecture />}
+      {/* {project.id === "ecoguard" && <ProjectArchitecture />} */}
 
       <div>
         <h4 className="eyebrow mb-3">Images needed</h4>
