@@ -1,4 +1,4 @@
-# À la Rafael
+# Portfolio Website
 
 An interactive cookbook-style software engineering portfolio. Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS 4, Framer Motion.
 
