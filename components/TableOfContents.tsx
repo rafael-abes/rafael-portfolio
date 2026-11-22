@@ -14,12 +14,12 @@ interface Entry {
 }
 
 const entries: Entry[] = [
-  { n: "01", title: "A little introduction", blurb: "Meet Rafael.", pending: "Phase 4" },
+  { n: "01", title: "A little introduction", blurb: "Meet Rafael.", href: "#intro" },
   { n: "02", title: "The pantry", blurb: "The ingredients, technologies and skills behind my work.", href: "#pantry" },
   { n: "03", title: "The recipes", blurb: "Selected engineering projects.", href: "#recipes" },
-  { n: "04", title: "The experience", blurb: "Professional experience and education.", pending: "Phase 4" },
-  { n: "05", title: "The chef’s notes", blurb: "Philosophy, interests and reflections.", pending: "Phase 4" },
-  { n: "06", title: "The next course", blurb: "Get in touch.", pending: "Phase 4" },
+  { n: "04", title: "The experience", blurb: "Professional experience and education.", href: "#journey" },
+  { n: "05", title: "The chef’s notes", blurb: "Philosophy, interests and reflections.", href: "#notes" },
+  { n: "06", title: "The next course", blurb: "Get in touch.", href: "#contact" },
 ];
 
 export function TableOfContents() {

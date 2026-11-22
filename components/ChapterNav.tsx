@@ -30,7 +30,7 @@ export function ChapterNav() {
           À la Rafael
         </button>
 
-        <ul className="hidden md:flex gap-8">
+        <ul className="hidden md:flex gap-4 lg:gap-7">
           {chapters.map((c) => (
             <li key={c.id}>
               <a
@@ -86,7 +86,7 @@ export function ChapterNav() {
                 }}
                 className="flex gap-4 items-baseline py-3"
               >
-                <span className="text-xs text-stone tabular-nums">0{i + 1}</span>
+                <span className="text-xs text-stone tabular-nums">{i === 0 ? "—" : `0${i}`}</span>
                 <span className="serif text-2xl">{c.label}</span>
               </a>
             </li>

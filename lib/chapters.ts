@@ -1,8 +1,12 @@
 /** Chapters that exist in the book today. Used by the nav and the page-turn transition. */
 export const chapters = [
   { id: "contents", label: "Contents", title: "Contents" },
+  { id: "intro", label: "Intro", title: "A little introduction" },
   { id: "pantry", label: "Pantry", title: "The pantry" },
   { id: "recipes", label: "Recipes", title: "The recipes" },
+  { id: "journey", label: "Experience", title: "The experience" },
+  { id: "notes", label: "Notes", title: "The chef’s notes" },
+  { id: "contact", label: "Contact", title: "The next course" },
 ] as const;
 
 export type ChapterId = (typeof chapters)[number]["id"];

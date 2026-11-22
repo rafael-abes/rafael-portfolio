@@ -4,12 +4,16 @@ import { useEffect } from "react";
 import { BookStateProvider, useBook } from "./BookState";
 import { BookCover } from "./BookCover";
 import { ChapterNav } from "./ChapterNav";
+import { Intro } from "./Intro";
 import { TableOfContents } from "./TableOfContents";
 import { Pantry } from "./Pantry";
 import { RecipeCollection } from "./RecipeCollection";
 import { RecipePage } from "./RecipePage";
 import { TastingMenu } from "./TastingMenu";
 import { PageTurn } from "./PageTurn";
+import { ChefJourney } from "./ChefJourney";
+import { ChefNotes } from "./ChefNotes";
+import { ContactSection } from "./ContactSection";
 
 function BookInner() {
   const { ready, phase, openProjectId, menuOpen } = useBook();
@@ -31,8 +35,12 @@ function BookInner() {
       <ChapterNav />
       <main>
         <TableOfContents />
+        <Intro />
         <Pantry />
         <RecipeCollection />
+        <ChefJourney />
+        <ChefNotes />
+        <ContactSection />
       </main>
       <footer className="border-t border-rule/40 px-5 py-10 text-center">
         <p className="serif italic text-2xl">There’s always another recipe in development.</p>
