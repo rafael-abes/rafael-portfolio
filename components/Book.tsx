@@ -44,7 +44,7 @@ function BookInner() {
       </main>
       <footer className="border-t border-rule/40 px-5 py-10 text-center">
         <p className="serif italic text-2xl">There’s always another recipe in development.</p>
-        <p className="eyebrow mt-3">À la Rafael · Vol. 01 · Prototype</p>
+        <p className="eyebrow mt-3">Rafael Abes · Vol. 01 · Prototype</p>
       </footer>
       <RecipePage />
       <TastingMenu />

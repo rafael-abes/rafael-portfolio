@@ -8,8 +8,8 @@
  */
 
 export const intro = {
-  heading: "Meet Rafael.",
-  aside: "Rafa, if you like.",
+  heading: "I'm Rafael!",
+  aside: "(Rafa for short)",
   paragraphs: [
     "I’m finishing a Bachelor of Computer Science at Monash University in December 2026. I like finding out how things work underneath, and then building something practical on top of that.",
     "So far that has meant a serverless ingestion pipeline on AWS, an iOS app on Firebase, and RAG automation workflows at Globe Telecom. I came up with the idea of turning my portfolio into a cookbook to reflect my love for cooking, and as it turns out cooking and software engineering have a lot in common.",
@@ -19,7 +19,6 @@ export const intro = {
     { label: "Graduating", value: "December 2026" },
     { label: "Most recently", value: "AI Practitioner Intern, Globe Telecom" },
   ],
-  draft: "Introduction copy is a draft written from your resume and brief. Rewrite it in your own words.",
 } as const;
 
 export interface JourneyEntry {
@@ -66,7 +65,6 @@ export const journey: JourneyEntry[] = [
         "Led a team in planning and delivering a networking event for 250+ attendees and 11 industry partners, delegating responsibilities and adapting to last-minute changes."
     ],
     ingredients: ["collaboration"],
-    recipeId: "mac",
   },
   {
     id: "dashlabs",

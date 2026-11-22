@@ -27,7 +27,7 @@ export function ChapterNav() {
     <header className="fixed top-0 inset-x-0 z-40 bg-ivory/90 backdrop-blur border-b border-rule/40">
       <nav aria-label="Chapters" className="mx-auto max-w-6xl px-5 h-14 flex items-center justify-between">
         <button type="button" onClick={closeBook} className="serif italic text-xl ulink" aria-label="Back to the cover">
-          À la Rafael
+          Rafael Abes
         </button>
 
         <ul className="hidden md:flex gap-4 lg:gap-7">

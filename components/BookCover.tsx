@@ -110,8 +110,8 @@ export function BookCover() {
               </span>
 
               <span className="mt-6 block">
-                <span className="block eyebrow !text-ivory/80 tracking-[0.5em]">À LA</span>
                 <span className="serif block text-[4.6rem] leading-[0.9] italic -ml-1">Rafael</span>
+                <span className="block eyebrow !text-ivory/80 tracking-[0.5em]">Abes</span>
               </span>
 
               <span className="mt-5 mx-auto w-[58%] aspect-square block opacity-95">
@@ -122,7 +122,7 @@ export function BookCover() {
                 <span className="serif italic block text-lg leading-snug text-ivory/95 max-w-[17rem]">
                   A collection of ingredients, experiments and things I’ve built.
                 </span>
-                <span className="block mt-4 text-[0.7rem] tracking-[0.28em] uppercase font-medium">Rafael Abes</span>
+                {/* <span className="block mt-4 text-[0.7rem] tracking-[0.28em] uppercase font-medium">Rafael Abes</span> */}
                 <span className="block text-[0.58rem] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-ivory/75 mt-1 leading-relaxed">
                   Personal portfolio · Software engineering
                 </span>

@@ -77,7 +77,7 @@ export interface Project {
   /** Chef's notes are Rafael's own reflections: left empty until written. */
   notes: string[];
   links: { github?: string; live?: string };
-  verify: string[];
+  verify: string[] | null | undefined;
 }
 
 export const categories: Category[] = [
@@ -239,12 +239,7 @@ export const projects: Project[] = [
     ],
     notes: [],
     links: {},
-    verify: [
-      "Do not describe as publicly released unless that's true.",
-      "The resume says Claude Code was used for features and testing with every change reviewed. Decide whether this recipe should say so too, so the site and resume tell the same story.",
-      "Add project duration and team size/role split.",
-      "Confirm the 'why Firebase' reasoning for the case study.",
-    ],
+    verify: [],
   },
   {
     id: "smartpark",
@@ -289,11 +284,7 @@ export const projects: Project[] = [
     ],
     notes: [],
     links: {},
-    verify: [
-      "SmartPark is not on the supplied resume. Confirm you want it featured, and that it is described accurately.",
-      "Add project duration and whether it was a team or solo project.",
-      "Add real results only from the Locust runs, if you want to quote any.",
-    ],
+    verify: [],
   },
   {
     id: "littlechef",
@@ -358,14 +349,11 @@ export const projects: Project[] = [
       "Load-testing preparation ahead of go-live.",
     ],
     placeholders: [
-      { label: "Workflow diagram", size: "1600 × 900", need: "A sanitised n8n workflow screenshot (nothing confidential)" },
+      { label: "Workflow diagram", size: "1600 × 900", need: "coming soon." },
     ],
     notes: [],
     links: {},
-    verify: [
-      "The figures here (2+ teams, 5+ hours a week, 10+ workflows, 200 virtual users) come straight from your resume. Keep them in step with it.",
-      "Check what from the internship is OK to show publicly.",
-    ],
+    verify: [],
   },
 ];
 

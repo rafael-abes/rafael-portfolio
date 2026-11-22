@@ -29,7 +29,7 @@ export function TableOfContents() {
   return (
     <section id="contents" aria-labelledby="contents-title" className="min-h-screen pt-28 pb-24 px-5">
       <div className="mx-auto max-w-4xl">
-        <p className="eyebrow">À la Rafael · Vol. 01</p>
+        <p className="eyebrow">Rafael Abes · Vol. 01</p>
         <h1 id="contents-title" className="serif text-[clamp(3.2rem,9vw,7rem)] leading-[0.95] mt-4">
           Contents
         </h1>
@@ -81,9 +81,6 @@ export function TableOfContents() {
           })}
         </ol>
 
-        <p className="hand text-xl text-brown mt-10 max-w-md">
-          Prototype note: chapters marked “Phase 4” are still being written. The pantry and recipes are live.
-        </p>
       </div>
     </section>
   );

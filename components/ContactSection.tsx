@@ -49,7 +49,6 @@ export function ContactSection() {
                 ) : (
                   <div className="flex items-baseline gap-6 py-5">
                     <span className="eyebrow w-28 shrink-0">{contactLabels[k]}</span>
-                    <DraftNote>add a public link before publishing (a PDF under /public works).</DraftNote>
                   </div>
                 )}
               </li>

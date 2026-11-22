@@ -17,8 +17,7 @@ export const contact: Contact = {
   email: "rafaelabes.1201@gmail.com",
   linkedin: "linkedin.com/in/rafael-abes",
   github: "github.com/rafael-abes",
-  // No public resume URL yet. Add one (for example a PDF in /public) and the receipt picks it up.
-  resume: null,
+  resume: "tinyurl.com/rafael-abes-resume",
 };
 
 export const contactLabels: Record<keyof Contact, string> = {
