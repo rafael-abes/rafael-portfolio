@@ -7,7 +7,7 @@ import "@fontsource/caveat/600.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rafael Abes, the portfolio: ingredients, experiments and things I've built",
+  title: "Rafael Abes",
   description:
     "The software engineering portfolio of Rafael Abes, laid out as a cookbook: a pantry of skills and a book of project recipes.",
 };
