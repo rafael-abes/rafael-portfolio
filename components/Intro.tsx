@@ -58,10 +58,6 @@ export function Intro() {
               Experience
             </button>
           </div>
-
-          <div className="mt-6">
-            <DraftNote>{intro.draft}</DraftNote>
-          </div>
         </motion.div>
       </div>
     </section>

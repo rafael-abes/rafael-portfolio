@@ -152,7 +152,7 @@ export const projects: Project[] = [
     summary:
       "The AWS ingestion pipeline for EcoGuard, a team-built, multi-cloud serverless platform that identifies and tags invasive pests and pets in wildlife images and videos. Files come in, duplicates are caught, and processing is triggered without anyone polling for it.",
     role: "Ingestion pipeline and data lead",
-    duration: null,
+    duration: "3 weeks",
     ingredients: ["python", "aws", "lambda", "s3", "eventbridge", "cognito", "sam", "dynamodb", "serverless", "ingestion", "data-modelling", "rest", "system-design", "collaboration"],
     contributions: [
       "Designed the DynamoDB structures for files, checksums, tag indexes and subscriptions.",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     summary:
       "A campus social app that helps university students organise spontaneous activities and connect with friends, built end to end in SwiftUI on Firebase.",
     role: "iOS engineer",
-    duration: null,
+    duration: "Ongoing",
     ingredients: ["swift", "swiftui", "firebase", "firestore", "gemini", "data-modelling"],
     contributions: [
       "SwiftUI application development.",
@@ -251,7 +251,7 @@ export const projects: Project[] = [
     summary:
       "A computer-vision parking detection system: a YOLO model behind a FastAPI service, containerised and deployed on Google Kubernetes Engine.",
     role: "Inference service and cloud deployment",
-    duration: null,
+    duration: "2 weeks",
     ingredients: ["python", "fastapi", "yolo", "ml-inference", "docker", "kubernetes", "gcp", "load-testing", "system-design"],
     contributions: [
       "Developed the FastAPI inference service.",
@@ -293,26 +293,24 @@ export const projects: Project[] = [
     workingTitle: "Node, Express and PostgreSQL",
     kind: "project",
     category: "Backend engineering · Web application",
-    summary: "A web application built on Node, Express and PostgreSQL.",
-    role: "Not yet written",
-    duration: null,
+    summary: "A web application built on Node, Express and PostgreSQL. Interactive front end built on top of a CRON job web scraper backend, used as a tool to make the process of selecting a recipe to cook easier.",
+    role: "Full stack developer",
+    duration: "Ongoing",
     ingredients: ["js-ts", "node", "express", "postgres", "sql", "rest", "data-modelling"],
-    contributions: [],
+    contributions: [
+      "Engineered a full-stack platform in Node.js/Express.js with an automated data pipeline (Cheerio, node-cron), applying clean API design and modular architecture principles",
+      "Designed a fuzzy search feature (pg_trgm, GIN index) for typo-tolerant querying, backed by a RESTful API deployed via Cloudflare and Railway",
+    ],
     method: [],
     techniques: [],
     deliverables: [],
     placeholders: [
-      { label: "App screens (3–4)", size: "1440 × 900 each", need: "Real screenshots of Little Chef" },
-      { label: "Schema diagram", size: "1600 × 900", need: "PostgreSQL tables and relationships" },
+      { label: "App screens (3–4)", size: "1440 × 900 each", need: "coming soon." },
+      { label: "Schema diagram", size: "1600 × 900", need: "coming soon." },
     ],
     notes: [],
     links: {},
-    verify: [
-      "Only the stack (Node, Express, PostgreSQL) is known. The resume you supplied doesn't mention Little Chef.",
-      "Write what it does, your role, how it was built, what was hard, and the duration. Nothing here is a claim yet beyond the stack.",
-      "The ingredient links (REST APIs, SQL, data modelling) are inferred from the stack. Remove any that don't apply.",
-      "Add the GitHub link, if the repository can be public.",
-    ],
+    verify: [],
   },
   {
     id: "globe",
@@ -351,7 +349,9 @@ export const projects: Project[] = [
     placeholders: [
       { label: "Workflow diagram", size: "1600 × 900", need: "coming soon." },
     ],
-    notes: [],
+    notes: [
+      "I learned that coming up with a solution that just works is not enough, it needs to be a solution that works well and most importantly at scale."
+    ],
     links: {},
     verify: [],
   },
