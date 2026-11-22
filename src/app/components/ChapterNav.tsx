@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { chapters, isPlainClick } from "@/lib/chapters";
+import { chapters, isPlainClick } from "@/src/app/lib/chapters";
 import { useBook } from "./BookState";
 
 export function ChapterNav() {

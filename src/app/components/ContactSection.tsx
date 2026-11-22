@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { SHOW_DRAFT_MARKERS } from "@/lib/data";
-import { contact, contactLabels, type Contact } from "@/lib/contact";
-import { contactCopy } from "@/lib/content";
+import { SHOW_DRAFT_MARKERS } from "@/src/app/lib/data";
+import { contact, contactLabels, type Contact } from "@/src/app/lib/contact";
+import { contactCopy } from "@/src/app/lib/content";
 import { useBook } from "./BookState";
 import { DraftNote } from "./DraftNote";
 

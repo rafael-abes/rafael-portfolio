@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { intro } from "@/lib/content";
+import { intro } from "@/src/app/lib/content";
 import { useBook } from "./BookState";
 import { DraftNote } from "./DraftNote";
 

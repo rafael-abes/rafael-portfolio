@@ -1,6 +1,6 @@
-import { SHOW_DRAFT_MARKERS } from "@/lib/data";
-import { contact, contactLabels, type Contact } from "@/lib/contact";
-import { RECEIPT_CLOSING, chosenProjects, formatReceiptDate, receiptTech } from "@/lib/receipt";
+import { SHOW_DRAFT_MARKERS } from "@/src/app/lib/data";
+import { contact, contactLabels, type Contact } from "@/src/app/lib/contact";
+import { RECEIPT_CLOSING, chosenProjects, formatReceiptDate, receiptTech } from "@/src/app/lib/receipt";
 
 /**
  * The tasting-menu receipt. Pure presentation: it renders whatever project ids

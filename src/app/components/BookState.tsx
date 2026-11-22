@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { projectsMatching } from "@/lib/data";
+import { projectsMatching } from "@/src/app/lib/data";
 
 type Phase = "closed" | "open";
 

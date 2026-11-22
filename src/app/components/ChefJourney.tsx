@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ingredientName } from "@/lib/data";
-import { education, journey } from "@/lib/content";
+import { ingredientName } from "@/src/app/lib/data";
+import { education, journey } from "@/src/app/lib/content";
 import { useBook } from "./BookState";
 import { DraftNote } from "./DraftNote";
 

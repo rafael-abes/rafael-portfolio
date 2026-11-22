@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
-import { categories, ingredientById, projectById, SHOW_DRAFT_MARKERS, type Project } from "@/lib/data";
+import { categories, ingredientById, projectById, SHOW_DRAFT_MARKERS, type Project } from "@/src/app/lib/data";
 import { Annotation } from "./Annotation";
 import { useBook } from "./BookState";
 // import { ProjectArchitecture } from "./ProjectArchitecture";
@@ -142,7 +142,7 @@ function DishTab({ project }: { project: Project }) {
         )}
       </div>
 
-      {SHOW_DRAFT_MARKERS && project.verify.length > 0 && (
+      {/* {SHOW_DRAFT_MARKERS && project.verify.length > 0 && (
         <div className="border-t border-rule/50 pt-5">
           <h4 className="eyebrow mb-2">To confirm before publishing</h4>
           <ul className="list-disc pl-5 text-sm text-stone space-y-1">
@@ -151,7 +151,7 @@ function DishTab({ project }: { project: Project }) {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

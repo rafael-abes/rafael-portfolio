@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { animate } from "framer-motion";
-import { chapterTitle } from "@/lib/chapters";
+import { chapterTitle } from "@/src/app/lib/chapters";
 import { useBook } from "./BookState";
 
 /**

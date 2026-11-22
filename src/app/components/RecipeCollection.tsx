@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Plus } from "lucide-react";
-import { ingredientName, projects } from "@/lib/data";
+import { ingredientName, projects } from "@/src/app/lib/data";
 import { useBook } from "./BookState";
 
 export function RecipeCollection() {

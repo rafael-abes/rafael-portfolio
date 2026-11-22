@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Download, Printer, X } from "lucide-react";
-import { ingredientName } from "@/lib/data";
-import { buildReceiptText, chosenProjects } from "@/lib/receipt";
+import { ingredientName } from "@/src/app/lib/data";
+import { buildReceiptText, chosenProjects } from "@/src/app/lib/receipt";
 import { useBook } from "./BookState";
 import { Receipt } from "./Receipt";
 
