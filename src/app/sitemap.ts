@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { indexableProjects, siteUrl } from "@/lib/site";
+import { indexableProjects, siteUrl } from "@/src/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
