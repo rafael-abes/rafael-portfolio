@@ -63,9 +63,9 @@ function IngredientDetail() {
       ) : (
         <p className="text-sm text-stone">
           Not tied to a featured recipe yet.
-          {SHOW_DRAFT_MARKERS && (
+          {/* {SHOW_DRAFT_MARKERS && (
             <span className="hand text-lg text-terra-deep block mt-1">verify: add where this was used</span>
-          )}
+          )} */}
         </p>
       )}
     </div>

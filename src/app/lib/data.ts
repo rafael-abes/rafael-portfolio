@@ -25,7 +25,7 @@ export type CategoryId =
 export interface Category {
   id: CategoryId;
   name: string;
-  blurb: string;
+  // blurb: string;
 }
 
 export interface Ingredient {
@@ -81,12 +81,12 @@ export interface Project {
 }
 
 export const categories: Category[] = [
-  { id: "languages", name: "Languages", blurb: "The staples. What most things get cooked in." },
-  { id: "backend", name: "Backend & application", blurb: "Frameworks and services that turn an idea into a working app." },
-  { id: "cloud", name: "Cloud infrastructure", blurb: "Where things run, scale and get shipped." },
-  { id: "data", name: "Databases & data", blurb: "How information is shaped, stored and found again." },
-  { id: "ai", name: "AI & machine learning", blurb: "Newer to the shelf, used for real work." },
-  { id: "qualities", name: "Engineering qualities", blurb: "The things that aren't on a package label." },
+  { id: "languages", name: "Languages" },
+  { id: "backend", name: "Backend & application" },
+  { id: "cloud", name: "Cloud infrastructure" },
+  { id: "data", name: "Databases & data" },
+  { id: "ai", name: "AI & machine learning" },
+  // { id: "qualities", name: "Engineering qualities", blurb: "The things that aren't on a package label." },
 ];
 
 export const ingredients: Ingredient[] = [
@@ -119,7 +119,7 @@ export const ingredients: Ingredient[] = [
 
   // Databases & data
   { id: "dynamodb", name: "DynamoDB", category: "data", represents: "Key-based data modelling for files, checksums, tag indexes and subscriptions." },
-  { id: "firestore", name: "Firestore", category: "data", represents: "Real-time synchronised data for Happs." },
+  { id: "firestore", name: "Firestore", category: "data", represents: "Real-time synchronised data.", example: "Used to achieve live friend map sychronisation in Happs." },
   { id: "postgres", name: "PostgreSQL", category: "data", represents: "Relational storage.", example: "The database behind Little Chef." },
   { id: "data-modelling", name: "Data modelling", category: "data", represents: "Deciding what the tables or documents should look like before writing the code." },
   { id: "ingestion", name: "Data ingestion & processing", category: "data", represents: "Getting files in reliably, once." },
@@ -133,12 +133,12 @@ export const ingredients: Ingredient[] = [
   { id: "ml-inference", name: "ML inference integration", category: "ai", represents: "Getting a trained model to run inside a real service." },
   { id: "load-testing", name: "Load testing", category: "ai", represents: "Checking a system holds up before and after it goes live.", example: "Locust for SmartPark; JMeter before a go-live at Globe." },
 
-  // Qualities
-  { id: "system-design", name: "System design", category: "qualities", represents: "Seeing how the components fit together." },
-  { id: "collaboration", name: "Collaboration", category: "qualities", represents: "Shared contracts and integration across a team." },
-  { id: "experimentation", name: "Experimentation", category: "qualities", represents: "Changing one thing, tasting, repeating." },
-  { id: "learning", name: "Independent learning", category: "qualities", represents: "Picking up unfamiliar tools to get something working." },
-  { id: "communication", name: "Technical communication", category: "qualities", represents: "Documentation that other people can actually use." },
+  // // Qualities
+  // { id: "system-design", name: "System design", category: "qualities", represents: "Seeing how the components fit together." },
+  // { id: "collaboration", name: "Collaboration", category: "qualities", represents: "Shared contracts and integration across a team." },
+  // { id: "experimentation", name: "Experimentation", category: "qualities", represents: "Changing one thing, tasting, repeating." },
+  // { id: "learning", name: "Independent learning", category: "qualities", represents: "Picking up unfamiliar tools to get something working." },
+  // { id: "communication", name: "Technical communication", category: "qualities", represents: "Documentation that other people can actually use." },
 ];
 
 export const projects: Project[] = [
