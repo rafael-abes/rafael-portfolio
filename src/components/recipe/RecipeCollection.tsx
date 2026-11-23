@@ -1,8 +1,8 @@
 "use client";
 
 import { Check, Plus } from "lucide-react";
-import { ingredientName, projects } from "@/src/app/lib/data";
-import { useBook } from "../Book/BookState";
+import { ingredientName, projects } from "@/src/lib/data";
+import { useBook } from "../book/BookState";
 
 export function RecipeCollection() {
   const { selected, matchingProjectIds, setHoverProject, openProject, menu, addToMenu, removeFromMenu } = useBook();

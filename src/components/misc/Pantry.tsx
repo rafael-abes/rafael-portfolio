@@ -2,8 +2,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
-import { categories, ingredientById, ingredientName, ingredients, projectById, projects, projectsFor, SHOW_DRAFT_MARKERS } from "@/src/app/lib/data";
-import { useBook } from "../Book/BookState";
+import { categories, ingredientById, ingredientName, ingredients, projectById, projects, projectsFor, SHOW_DRAFT_MARKERS } from "@/src/lib/data";
+import { useBook } from "../book/BookState";
 
 /** Deterministic tilt so the shelf feels hand-arranged but never jitters between renders. */
 function tiltFor(id: string): number {

@@ -1,4 +1,4 @@
-import { SHOW_DRAFT_MARKERS } from "@/src/app/lib/data";
+import { SHOW_DRAFT_MARKERS } from "@/src/lib/data";
 
 /**
  * A handwritten reminder that something needs Rafael's attention before the site goes live.

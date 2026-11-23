@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Download, Printer, X } from "lucide-react";
-import { ingredientName } from "@/src/app/lib/data";
-import { buildReceiptText, chosenProjects } from "@/src/app/lib/receipt";
-import { useBook } from "./Book/BookState";
-import { Receipt } from "./Misc/Receipt";
+import { ingredientName } from "@/src/lib/data";
+import { buildReceiptText, chosenProjects } from "@/src/lib/receipt";
+import { useBook } from "./book/BookState";
+import { Receipt } from "./misc/Receipt";
 
 type View = "list" | "receipt";
 

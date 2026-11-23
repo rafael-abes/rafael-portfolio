@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { animate } from "framer-motion";
-import { chapterTitle } from "@/src/app/lib/chapters";
-import { useBook } from "../Book/BookState";
+import { chapterTitle } from "@/src/lib/chapters";
+import { useBook } from "../book/BookState";
 
 /**
  * Page-turn transition between chapters: a sheet of paper sweeps across, the

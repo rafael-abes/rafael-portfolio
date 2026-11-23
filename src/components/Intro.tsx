@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { intro } from "@/src/app/lib/content";
-import { useBook } from "./Book/BookState";
-import { DraftNote } from "./Misc/DraftNote";
+import { intro } from "@/src/lib/content";
+import { useBook } from "./book/BookState";
+import { DraftNote } from "./misc/DraftNote";
 
 export function Intro() {
   const reduce = useReducedMotion();

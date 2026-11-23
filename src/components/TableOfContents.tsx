@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { isPlainClick } from "@/src/app/lib/chapters";
-import { useBook } from "./Book/BookState";
+import { isPlainClick } from "@/src/lib/chapters";
+import { useBook } from "./book/BookState";
 
 interface Entry {
   n: string;

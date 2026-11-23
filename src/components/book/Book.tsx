@@ -3,16 +3,16 @@
 import { useEffect } from "react";
 import { BookStateProvider, useBook } from "./BookState";
 import { BookCover } from "./BookCover";
-import { ChapterNav } from "../Nav/ChapterNav";
+import { ChapterNav } from "../nav/ChapterNav";
 import { Intro } from "../Intro";
 import { TableOfContents } from "../TableOfContents";
-import { Pantry } from "../Misc/Pantry";
-import { RecipeCollection } from "../Recipe/RecipeCollection";
-import { RecipePage } from "../Recipe/RecipePage";
+import { Pantry } from "../misc/Pantry";
+import { RecipeCollection } from "../recipe/RecipeCollection";
+import { RecipePage } from "../recipe/RecipePage";
 import { TastingMenu } from "../TastingMenu";
-import { PageTurn } from "../Nav/PageTurn";
-import { ChefJourney } from "../Chef/ChefJourney";
-import { ChefNotes } from "../Chef/ChefNotes";
+import { PageTurn } from "../nav/PageTurn";
+import { ChefJourney } from "../chef/ChefJourney";
+import { ChefNotes } from "../chef/ChefNotes";
 import { ContactSection } from "../ContactSection";
 
 function BookInner() {

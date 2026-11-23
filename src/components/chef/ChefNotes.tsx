@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { notes } from "@/src/app/lib/content";
-import { Annotation } from "../Misc/Annotation";
-import { DraftNote } from "../Misc/DraftNote";
+import { notes } from "@/src/lib/content";
+import { Annotation } from "../misc/Annotation";
+import { DraftNote } from "../misc/DraftNote";
 
 export function ChefNotes() {
   const reduce = useReducedMotion();

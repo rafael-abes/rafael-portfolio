@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ingredientName } from "@/src/app/lib/data";
-import { education, journey } from "@/src/app/lib/content";
-import { useBook } from "../Book/BookState";
-import { DraftNote } from "../Misc/DraftNote";
+import { ingredientName } from "@/src/lib/data";
+import { education, journey } from "@/src/lib/content";
+import { useBook } from "../book/BookState";
+import { DraftNote } from "../misc/DraftNote";
 
 export function ChefJourney() {
   const reduce = useReducedMotion();
