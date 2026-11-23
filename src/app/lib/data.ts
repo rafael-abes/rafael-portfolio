@@ -312,49 +312,49 @@ export const projects: Project[] = [
     links: {},
     verify: [],
   },
-  {
-    id: "globe",
-    number: "05",
-    name: "Globe Telecom",
-    workingTitle: "AI practitioner internship",
-    kind: "experience",
-    category: "Professional experience · AI engineering",
-    summary:
-      "Practical AI automation and internal knowledge work: n8n RAG workflows used by multiple teams, and documentation that helps knowledge travel between them.",
-    role: "AI Practitioner Intern",
-    duration: "Nov 2025 – Feb 2026",
-    ingredients: ["n8n", "rag", "gemini", "notebooklm", "gcp", "load-testing", "communication", "learning"],
-    contributions: [
-      "Designed and built RAG-based automation workflows in n8n: reusable AI solutions adopted by 2+ cross-functional teams, saving 5+ hours of manual work per week.",
-      "Deployed and configured n8n task runners on Google Cloud, resolving infrastructure and configuration issues to restore code-node functionality across 10+ existing production workflows after a platform migration.",
-      "Load tested with Apache JMeter at up to 200 concurrent virtual users, finding and fixing reliability and performance bottlenecks ahead of production release.",
-      "Used NotebookLM and Gemini Gems to improve process documentation and reduce knowledge silos.",
-      "Worked on software integrations.",
-    ],
-    method: [
-      { title: "Template the workflow", body: "n8n RAG workflows built as reusable templates so other teams can start from something working.", note: { hint: "why templates?", more: "A template gives the next team a working starting point instead of a blank canvas, so a good workflow is reused rather than rebuilt." } },
-      { title: "Connect to what teams already use", body: "Integrations bring the AI steps into existing tools and processes." },
-      { title: "Document as you go", body: "NotebookLM and Gemini Gems turn scattered process knowledge into something people can query." },
-      { title: "Keep the platform running", body: "After a platform migration, n8n task runners were deployed and configured on Google Cloud to bring code nodes back across existing production workflows." },
-      { title: "Check it before it's live", body: "JMeter load tests, up to 200 concurrent virtual users, ahead of production release." },
-    ],
-    techniques: [
-      { title: "Templates over one-offs", body: "A reusable workflow spreads further than a bespoke one." },
-    ],
-    deliverables: [
-      "n8n RAG and automation templates used by multiple teams.",
-      "Process documentation built with NotebookLM and Gemini Gems.",
-      "Load-testing preparation ahead of go-live.",
-    ],
-    placeholders: [
-      { label: "Workflow diagram", size: "1600 × 900", need: "coming soon." },
-    ],
-    notes: [
-      "I learned that coming up with a solution that just works is not enough, it needs to be a solution that works well and most importantly at scale."
-    ],
-    links: {},
-    verify: [],
-  },
+  // {
+  //   id: "globe",
+  //   number: "05",
+  //   name: "Globe Telecom",
+  //   workingTitle: "AI practitioner internship",
+  //   kind: "experience",
+  //   category: "Professional experience · AI engineering",
+  //   summary:
+  //     "Practical AI automation and internal knowledge work: n8n RAG workflows used by multiple teams, and documentation that helps knowledge travel between them.",
+  //   role: "AI Practitioner Intern",
+  //   duration: "Nov 2025 – Feb 2026",
+  //   ingredients: ["n8n", "rag", "gemini", "notebooklm", "gcp", "load-testing", "communication", "learning"],
+  //   contributions: [
+  //     "Designed and built RAG-based automation workflows in n8n: reusable AI solutions adopted by 2+ cross-functional teams, saving 5+ hours of manual work per week.",
+  //     "Deployed and configured n8n task runners on Google Cloud, resolving infrastructure and configuration issues to restore code-node functionality across 10+ existing production workflows after a platform migration.",
+  //     "Load tested with Apache JMeter at up to 200 concurrent virtual users, finding and fixing reliability and performance bottlenecks ahead of production release.",
+  //     "Used NotebookLM and Gemini Gems to improve process documentation and reduce knowledge silos.",
+  //     "Worked on software integrations.",
+  //   ],
+  //   method: [
+  //     { title: "Template the workflow", body: "n8n RAG workflows built as reusable templates so other teams can start from something working.", note: { hint: "why templates?", more: "A template gives the next team a working starting point instead of a blank canvas, so a good workflow is reused rather than rebuilt." } },
+  //     { title: "Connect to what teams already use", body: "Integrations bring the AI steps into existing tools and processes." },
+  //     { title: "Document as you go", body: "NotebookLM and Gemini Gems turn scattered process knowledge into something people can query." },
+  //     { title: "Keep the platform running", body: "After a platform migration, n8n task runners were deployed and configured on Google Cloud to bring code nodes back across existing production workflows." },
+  //     { title: "Check it before it's live", body: "JMeter load tests, up to 200 concurrent virtual users, ahead of production release." },
+  //   ],
+  //   techniques: [
+  //     { title: "Templates over one-offs", body: "A reusable workflow spreads further than a bespoke one." },
+  //   ],
+  //   deliverables: [
+  //     "n8n RAG and automation templates used by multiple teams.",
+  //     "Process documentation built with NotebookLM and Gemini Gems.",
+  //     "Load-testing preparation ahead of go-live.",
+  //   ],
+  //   placeholders: [
+  //     { label: "Workflow diagram", size: "1600 × 900", need: "coming soon." },
+  //   ],
+  //   notes: [
+  //     "I learned that coming up with a solution that just works is not enough, it needs to be a solution that works well and most importantly at scale."
+  //   ],
+  //   links: {},
+  //   verify: [],
+  // },
 ];
 
 /* ---------- derived lookups ---------- */

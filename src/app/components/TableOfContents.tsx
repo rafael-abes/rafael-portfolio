@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { isPlainClick } from "@/src/app/lib/chapters";
-import { useBook } from "./BookState";
+import { useBook } from "./Book/BookState";
 
 interface Entry {
   n: string;

@@ -3,8 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ingredientName } from "@/src/app/lib/data";
 import { education, journey } from "@/src/app/lib/content";
-import { useBook } from "./BookState";
-import { DraftNote } from "./DraftNote";
+import { useBook } from "../Book/BookState";
+import { DraftNote } from "../Misc/DraftNote";
 
 export function ChefJourney() {
   const reduce = useReducedMotion();

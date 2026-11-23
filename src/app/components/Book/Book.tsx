@@ -3,17 +3,17 @@
 import { useEffect } from "react";
 import { BookStateProvider, useBook } from "./BookState";
 import { BookCover } from "./BookCover";
-import { ChapterNav } from "./ChapterNav";
-import { Intro } from "./Intro";
-import { TableOfContents } from "./TableOfContents";
-import { Pantry } from "./Pantry";
-import { RecipeCollection } from "./RecipeCollection";
-import { RecipePage } from "./RecipePage";
-import { TastingMenu } from "./TastingMenu";
-import { PageTurn } from "./PageTurn";
-import { ChefJourney } from "./ChefJourney";
-import { ChefNotes } from "./ChefNotes";
-import { ContactSection } from "./ContactSection";
+import { ChapterNav } from "../Nav/ChapterNav";
+import { Intro } from "../Intro";
+import { TableOfContents } from "../TableOfContents";
+import { Pantry } from "../Misc/Pantry";
+import { RecipeCollection } from "../Recipe/RecipeCollection";
+import { RecipePage } from "../Recipe/RecipePage";
+import { TastingMenu } from "../TastingMenu";
+import { PageTurn } from "../Nav/PageTurn";
+import { ChefJourney } from "../Chef/ChefJourney";
+import { ChefNotes } from "../Chef/ChefNotes";
+import { ContactSection } from "../ContactSection";
 
 function BookInner() {
   const { ready, phase, openProjectId, menuOpen } = useBook();

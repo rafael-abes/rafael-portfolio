@@ -4,8 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import { SHOW_DRAFT_MARKERS } from "@/src/app/lib/data";
 import { contact, contactLabels, type Contact } from "@/src/app/lib/contact";
 import { contactCopy } from "@/src/app/lib/content";
-import { useBook } from "./BookState";
-import { DraftNote } from "./DraftNote";
+import { useBook } from "./Book/BookState";
+import { DraftNote } from "./Misc/DraftNote";
 
 /** Turn a stored value into a link. Email becomes mailto:, bare domains get https://. */
 function hrefFor(key: keyof Contact, value: string): string {

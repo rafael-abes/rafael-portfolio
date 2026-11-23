@@ -2,8 +2,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { notes } from "@/src/app/lib/content";
-import { Annotation } from "./Annotation";
-import { DraftNote } from "./DraftNote";
+import { Annotation } from "../Misc/Annotation";
+import { DraftNote } from "../Misc/DraftNote";
 
 export function ChefNotes() {
   const reduce = useReducedMotion();

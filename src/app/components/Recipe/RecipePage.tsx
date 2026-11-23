@@ -4,8 +4,8 @@ import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import { categories, ingredientById, projectById, SHOW_DRAFT_MARKERS, type Project } from "@/src/app/lib/data";
-import { Annotation } from "./Annotation";
-import { useBook } from "./BookState";
+import { Annotation } from "../Misc/Annotation";
+import { useBook } from "../Book/BookState";
 // import { ProjectArchitecture } from "./ProjectArchitecture";
 
 const tabs = [

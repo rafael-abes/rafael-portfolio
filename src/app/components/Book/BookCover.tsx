@@ -105,8 +105,7 @@ export function BookCover() {
 
             <span className="relative flex flex-col h-full px-7 sm:px-8 pt-9 pb-9">
               <span className="eyebrow !text-ivory/70 flex justify-between">
-                <span>Vol. 01</span>
-                <span>2026</span>
+                <span>Software engineering</span>
               </span>
 
               <span className="mt-6 block">
@@ -124,7 +123,7 @@ export function BookCover() {
                 </span>
                 {/* <span className="block mt-4 text-[0.7rem] tracking-[0.28em] uppercase font-medium">Rafael Abes</span> */}
                 <span className="block text-[0.58rem] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-ivory/75 mt-1 leading-relaxed">
-                  Personal portfolio · Software engineering
+                  Personal portfolio
                 </span>
               </span>
             </span>

@@ -45,7 +45,6 @@ export const journey: JourneyEntry[] = [
     kind: "Professional kitchen",
     role: "AI Practitioner Intern",
     org: "Globe Telecom",
-    place: "Taguig City, Philippines",
     dates: "November 2025 – February 2026",
     points: [
       "Designed and built RAG-based automation workflows in n8n: reusable AI solutions adopted by 2+ cross-functional teams, saving 5+ hours of manual work per week.",

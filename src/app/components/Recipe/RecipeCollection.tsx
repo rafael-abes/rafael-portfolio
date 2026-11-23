@@ -2,7 +2,7 @@
 
 import { Check, Plus } from "lucide-react";
 import { ingredientName, projects } from "@/src/app/lib/data";
-import { useBook } from "./BookState";
+import { useBook } from "../Book/BookState";
 
 export function RecipeCollection() {
   const { selected, matchingProjectIds, setHoverProject, openProject, menu, addToMenu, removeFromMenu } = useBook();
