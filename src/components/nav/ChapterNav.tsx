@@ -1,14 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { chapters, isPlainClick } from "@/src/lib/chapters";
-import { useBook } from "../book/BookState";
+import { chapters, isPlainClick } from "@/lib/chapters";
+import { useBook } from "./BookState";
 
 export function ChapterNav() {
   const { closeBook, menu, setMenuOpen, goToChapter } = useBook();
   const [active, setActive] = useState<string>("contents");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const burger = useRef<HTMLButtonElement>(null);
+
+  // Escape closes the chapter list and hands focus back to its button.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        burger.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
 
   useEffect(() => {
     const els = chapters.map((c) => document.getElementById(c.id)).filter((e): e is HTMLElement => !!e);
@@ -26,11 +40,11 @@ export function ChapterNav() {
   return (
     <header className="fixed top-0 inset-x-0 z-40 bg-ivory/90 backdrop-blur border-b border-rule/40">
       <nav aria-label="Chapters" className="mx-auto max-w-6xl px-5 h-14 flex items-center justify-between">
-        <button type="button" onClick={closeBook} className="serif italic text-xl ulink" aria-label="Back to the cover">
-          Rafael Abes
+        <button type="button" onClick={closeBook} className="serif italic text-xl ulink whitespace-nowrap" aria-label="Back to the cover">
+          À la Rafael
         </button>
 
-        <ul className="hidden md:flex gap-4 lg:gap-7">
+        <ul className="hidden lg:flex gap-7">
           {chapters.map((c) => (
             <li key={c.id}>
               <a
@@ -54,14 +68,15 @@ export function ChapterNav() {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="eyebrow border border-rule px-3 py-2 hover:bg-paper transition-colors"
+            className="eyebrow border border-rule px-3 py-2 hover:bg-paper transition-colors whitespace-nowrap"
             aria-label={`Open your tasting menu, ${menu.length} selected`}
           >
             Tasting menu · <span className="tabular-nums">{menu.length}</span>
           </button>
           <button
+            ref={burger}
             type="button"
-            className="md:hidden p-2 -mr-2"
+            className="lg:hidden p-2 -mr-2"
             aria-expanded={mobileOpen}
             aria-controls="mobile-chapters"
             aria-label={mobileOpen ? "Close chapter list" : "Open chapter list"}
@@ -73,7 +88,7 @@ export function ChapterNav() {
       </nav>
 
       {mobileOpen && (
-        <ul id="mobile-chapters" className="md:hidden border-t border-rule/40 bg-ivory px-5 py-3">
+        <ul id="mobile-chapters" className="lg:hidden border-t border-rule/40 bg-ivory px-5 py-3">
           {chapters.map((c, i) => (
             <li key={c.id} className="border-b border-rule/30 last:border-0">
               <a

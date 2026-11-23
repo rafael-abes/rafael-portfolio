@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
-import { categories, ingredientById, ingredientName, ingredients, projectById, projects, projectsFor, SHOW_DRAFT_MARKERS } from "@/src/lib/data";
+import { categories, ingredientById, ingredientName, ingredients, projectById, projects, projectsFor, SHOW_DRAFT_MARKERS } from "@/lib/data";
 import { useBook } from "../book/BookState";
 
 /** Deterministic tilt so the shelf feels hand-arranged but never jitters between renders. */
@@ -148,7 +148,7 @@ export function Pantry() {
                     <h3 className="serif text-3xl">{cat.name}</h3>
                     <p className="text-sm text-stone">{cat.blurb}</p>
                   </div>
-                  <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-5 pb-4 border-b-[3px] border-brown/30">
+                  <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:flex sm:flex-wrap pb-4 border-b-[3px] border-brown/30">
                     {items.map((ing, i) => {
                       const pressed = selected.includes(ing.id);
                       const related = relatedIds.has(ing.id);
@@ -184,11 +184,11 @@ export function Pantry() {
             })}
           </div>
 
-          <aside className="lg:col-span-4">
+          <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-24">
               <IngredientDetail key={focusedIngredient ?? "none"} />
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>

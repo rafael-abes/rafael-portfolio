@@ -20,7 +20,7 @@ export function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="py-24 px-5 border-t border-rule/40">
       <div className="mx-auto max-w-5xl">
-        <p className="eyebrow">05 · The next course</p>
+        <p className="eyebrow">06 · The next course</p>
         <h2 id="contact-title" className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mt-4">
           {contactCopy.heading}
         </h2>
@@ -36,19 +36,22 @@ export function ContactSection() {
                   <a
                     href={hrefFor(k, value)}
                     {...(k === "email" ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-                    className="group flex items-baseline gap-6 py-5 px-2 -mx-2 hover:bg-paper/70 transition-colors"
+                    className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6 py-5 px-2 -mx-2 hover:bg-paper/70 transition-colors"
                   >
-                    <span className="eyebrow w-28 shrink-0">{contactLabels[k]}</span>
-                    <span className="serif text-[clamp(1.4rem,3.4vw,2.2rem)] leading-tight break-all">{value}</span>
+                    <span className="eyebrow sm:w-28 shrink-0">{contactLabels[k]}</span>
+                    <span className="serif text-[clamp(1.3rem,3.4vw,2.2rem)] leading-tight [overflow-wrap:anywhere]">
+                      {value}
+                    </span>
                     <ArrowUpRight
                       size={20}
                       aria-hidden="true"
-                      className="ml-auto shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      className="hidden sm:block ml-auto shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     />
                   </a>
                 ) : (
-                  <div className="flex items-baseline gap-6 py-5">
-                    <span className="eyebrow w-28 shrink-0">{contactLabels[k]}</span>
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6 py-5">
+                    <span className="eyebrow sm:w-28 shrink-0">{contactLabels[k]}</span>
+                    <DraftNote>add a public link before publishing (a PDF under /public works).</DraftNote>
                   </div>
                 )}
               </li>

@@ -81,6 +81,11 @@ body::before {
   background-position: 0 100%;
   background-repeat: no-repeat;
   transition: background-size 0.35s var(--ease-page);
+  /* Bigger hit area without moving anything: the padding is cancelled by the negative margin,
+     and the underline stays under the text rather than under the padding. */
+  background-origin: content-box;
+  padding-block: 0.6rem;
+  margin-block: -0.6rem;
 }
 .ulink:hover, .ulink:focus-visible { background-size: 100% 1px; }
 
@@ -129,6 +134,10 @@ body::before {
   border-radius: 0.2rem 0.2rem 0 0;
   opacity: 0.85;
 }
+/* On phones the jars share the row evenly instead of leaving a gap on the right. */
+@media (max-width: 639px) {
+  .jar { display: flex; width: 100%; }
+}
 .jar:hover { transform: translateY(-3px) rotate(var(--tilt, 0deg)); box-shadow: 0 8px 14px -8px rgba(36,35,31,0.4); }
 .jar:active { transform: translateY(0) scale(0.98); }
 .jar[aria-pressed="true"] {
@@ -138,7 +147,7 @@ body::before {
 }
 .jar[aria-pressed="true"]::before { background: var(--color-ink); }
 .jar[data-related="true"] { border-color: var(--color-olive-deep); box-shadow: 0 0 0 2px var(--color-olive); }
-.jar[data-dim="true"] { opacity: 0.35; }
+.jar[data-dim="true"] { opacity: 0.72; }
 
 /* ---------- recipe tabs ---------- */
 
@@ -204,3 +213,6 @@ body::before {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Returning visitors: hide the cover before React hydrates (see the inline script in layout.tsx). */
+html[data-returning] [data-cover] { display: none; }
