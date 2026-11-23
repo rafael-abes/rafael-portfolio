@@ -18,8 +18,8 @@ const entries: Entry[] = [
   { n: "02", title: "The pantry", blurb: "The ingredients, technologies and skills behind my work.", href: "#pantry" },
   { n: "03", title: "The recipes", blurb: "Selected engineering projects.", href: "#recipes" },
   { n: "04", title: "The experience", blurb: "Professional experience and education.", href: "#journey" },
-  { n: "05", title: "The chef’s notes", blurb: "Philosophy, interests and reflections.", href: "#notes" },
-  { n: "06", title: "The next course", blurb: "Get in touch.", href: "#contact" },
+  // { n: "05", title: "The chef’s notes", blurb: "Philosophy, interests and reflections.", href: "#notes" },
+  { n: "05", title: "The next course", blurb: "Get in touch.", href: "#contact" },
 ];
 
 export function TableOfContents() {

@@ -39,7 +39,7 @@ function BookInner() {
         <Pantry />
         <RecipeCollection />
         <ChefJourney />
-        <ChefNotes />
+        {/* <ChefNotes /> */}
         <ContactSection />
       </main>
       <footer className="border-t border-rule/40 px-5 py-10 text-center">

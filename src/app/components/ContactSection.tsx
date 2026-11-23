@@ -20,7 +20,7 @@ export function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="py-24 px-5 border-t border-rule/40">
       <div className="mx-auto max-w-5xl">
-        <p className="eyebrow">06 · The next course</p>
+        <p className="eyebrow">05 · The next course</p>
         <h2 id="contact-title" className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mt-4">
           {contactCopy.heading}
         </h2>

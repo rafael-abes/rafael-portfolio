@@ -5,7 +5,7 @@ export const chapters = [
   { id: "pantry", label: "Pantry", title: "The pantry" },
   { id: "recipes", label: "Recipes", title: "The recipes" },
   { id: "journey", label: "Experience", title: "The experience" },
-  { id: "notes", label: "Notes", title: "The chef’s notes" },
+  // { id: "notes", label: "Notes", title: "The chef’s notes" },
   { id: "contact", label: "Contact", title: "The next course" },
 ] as const;
 
