@@ -146,7 +146,7 @@ export function Pantry() {
                 <div key={cat.id}>
                   <div className="flex items-baseline gap-3 flex-wrap">
                     <h3 className="serif text-3xl">{cat.name}</h3>
-                    <p className="text-sm text-stone">{cat.blurb}</p>
+                    {/* <p className="text-sm text-stone">{cat.blurb}</p> */}
                   </div>
                   <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:flex sm:flex-wrap pb-4 border-b-[3px] border-brown/30">
                     {items.map((ing, i) => {
