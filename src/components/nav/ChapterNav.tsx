@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { chapters, isPlainClick } from "@/lib/chapters";
-import { useBook } from "./BookState";
+import { chapters, isPlainClick } from "@/src/lib/chapters";
+import { useBook } from "../book/BookState";
 
 export function ChapterNav() {
   const { closeBook, menu, setMenuOpen, goToChapter } = useBook();
