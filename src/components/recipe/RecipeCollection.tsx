@@ -27,7 +27,7 @@ export function RecipeCollection() {
             return (
               <li
                 key={p.id}
-                className={`border-b border-rule/60 transition-opacity duration-300 ${matches ? "opacity-100" : "opacity-35"}`}
+                className={`border-b border-rule/60 border-l-[3px] pl-3 -ml-3 transition-colors duration-300 ${selected.length > 0 && matches ? "border-l-terra-deep" : "border-l-transparent"}`}
                 onMouseEnter={() => setHoverProject(p.id)}
                 onMouseLeave={() => setHoverProject(null)}
                 onFocus={() => setHoverProject(p.id)}
@@ -77,7 +77,7 @@ export function RecipeCollection() {
                         type="button"
                         aria-pressed={inMenu}
                         onClick={() => (inMenu ? removeFromMenu(p.id) : addToMenu(p.id))}
-                        className="eyebrow border border-ink px-4 py-3 flex items-center gap-2 hover:bg-paper transition-colors active:scale-[0.98] aria-pressed:bg-olive-deep aria-pressed:text-paper aria-pressed:border-olive-deep"
+                        className="eyebrow border border-ink px-4 py-3 flex items-center gap-2 hover:bg-paper transition-colors active:scale-[0.98] aria-pressed:bg-olive-deep aria-pressed:!text-paper aria-pressed:border-olive-deep"
                       >
                         {inMenu ? <Check size={13} aria-hidden="true" /> : <Plus size={13} aria-hidden="true" />}
                         {inMenu ? "On your menu" : "Add to menu"}

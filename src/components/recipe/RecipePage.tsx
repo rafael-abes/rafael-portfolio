@@ -35,7 +35,7 @@ function IngredientsTab({ project, onPick }: { project: Project; onPick: (id: st
     <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
       {byCat.map(({ cat, items }) => (
         <div key={cat.id}>
-          <h4 className="eyebrow mb-2">{cat.name}</h4>
+          <h3 className="eyebrow mb-2">{cat.name}</h3>
           <ul>
             {items.map((ing) =>
               ing ? (
@@ -64,7 +64,7 @@ function MethodTab({ project }: { project: Project }) {
           <li key={s.title} className="grid grid-cols-[2.5rem_1fr] gap-3">
             <span className="serif text-3xl text-terra-deep tabular-nums leading-none pt-1">{i + 1}</span>
             <div>
-              <h4 className="serif text-2xl leading-tight">{s.title}</h4>
+              <h3 className="serif text-2xl leading-tight">{s.title}</h3>
               <p className="text-brown mt-1 max-w-prose">{s.body}</p>
               {s.note && <Annotation hint={s.note.hint}>{s.note.more}</Annotation>}
               {s.verify && <Verify>{s.verify}</Verify>}
@@ -76,7 +76,7 @@ function MethodTab({ project }: { project: Project }) {
       {(project.techniques.length > 0 || SHOW_DRAFT_MARKERS) && (
         <>
           <hr className="rule my-8" />
-          <h4 className="eyebrow mb-3">Special techniques</h4>
+          <h3 className="eyebrow mb-3">Special techniques</h3>
           {project.techniques.length === 0 && <ToWrite>the technical decisions worth pointing out.</ToWrite>}
           <ul className="grid sm:grid-cols-3 gap-4">
             {project.techniques.map((t) => (
@@ -97,7 +97,7 @@ function DishTab({ project }: { project: Project }) {
     <div className="space-y-8">
       {(project.deliverables.length > 0 || SHOW_DRAFT_MARKERS) && (
         <div>
-          <h4 className="eyebrow mb-3">What came out of it</h4>
+          <h3 className="eyebrow mb-3">What came out of it</h3>
           {project.deliverables.length === 0 && <ToWrite>what it does and what was delivered.</ToWrite>}
           <ul className="space-y-2">
             {project.deliverables.map((d) => (
@@ -113,7 +113,7 @@ function DishTab({ project }: { project: Project }) {
       {/* {project.id === "ecoguard" && <ProjectArchitecture />} */}
 
       <div>
-        <h4 className="eyebrow mb-3">Images needed</h4>
+        <h3 className="eyebrow mb-3">Images needed</h3>
         <ul className="grid sm:grid-cols-2 gap-4">
           {project.placeholders.map((ph) => (
             <li
@@ -130,7 +130,7 @@ function DishTab({ project }: { project: Project }) {
       </div>
 
       <div>
-        <h4 className="eyebrow mb-2">Chef’s notes</h4>
+        <h3 className="eyebrow mb-2">Chef’s notes</h3>
         {project.notes.length === 0 ? (
           <p className="hand text-2xl text-terra-deep -rotate-1">
             Challenges and lessons: in Rafael’s own words, still to be written.
@@ -144,7 +144,7 @@ function DishTab({ project }: { project: Project }) {
 
       {/* {SHOW_DRAFT_MARKERS && project.verify.length > 0 && (
         <div className="border-t border-rule/50 pt-5">
-          <h4 className="eyebrow mb-2">To confirm before publishing</h4>
+          <h3 className="eyebrow mb-2">To confirm before publishing</h3>
           <ul className="list-disc pl-5 text-sm text-stone space-y-1">
             {project.verify.map((v) => (
               <li key={v}>{v}</li>
@@ -171,14 +171,25 @@ export function RecipePage() {
   }, [openProjectId]);
 
   // Focus management: move focus in, trap Tab, restore on close, close on Escape.
+  // closeProject is recreated on every render, so it is read through a ref; otherwise this effect
+  // would re-run mid-session and forget which button opened the recipe.
+  const closeProjectRef = useRef(closeProject);
+  closeProjectRef.current = closeProject;
+  const returnTo = useRef<HTMLElement | null>(null);
+
+  // Remember the opener before the page behind goes inert (which would blur it).
+  useLayoutEffect(() => {
+    if (openProjectId) returnTo.current = document.activeElement as HTMLElement | null;
+  }, [openProjectId]);
+
+  const isOpen = !!project;
   useEffect(() => {
-    if (!project) return;
-    const previous = document.activeElement as HTMLElement | null;
+    if (!isOpen) return;
     closeRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        closeProject();
+        closeProjectRef.current();
         return;
       }
       if (e.key !== "Tab" || !dialogRef.current) return;
@@ -199,9 +210,9 @@ export function RecipePage() {
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      previous?.focus?.();
+      returnTo.current?.focus?.();
     };
-  }, [project, closeProject]);
+  }, [isOpen]);
 
   const onTabKey = (e: React.KeyboardEvent, i: number) => {
     let next = i;

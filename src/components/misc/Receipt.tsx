@@ -14,9 +14,9 @@ export function Receipt({ projectIds, date }: { projectIds: string[]; date: Date
   return (
     <article className="receipt" aria-label="Your personal tasting menu receipt">
       <header className="text-center">
-        <p className="serif text-4xl leading-none tracking-wide">À LA RAFAEL</p>
+        <p className="serif text-4xl leading-none tracking-wide">Rafael Abes</p>
         <p className="receipt-label mt-3">Your personal tasting menu</p>
-        <p className="text-xs mt-2">Rafael Abes · Software engineering</p>
+        <p className="text-xs mt-2">Software Engineering Portfolio</p>
       </header>
 
       <hr className="receipt-rule" />

@@ -164,9 +164,9 @@ export const projects: Project[] = [
       "Contributed to the shared contracts used to integrate team components.",
     ],
     method: [
-      { title: "The architecture", body: "A serverless pipeline on AWS: S3 for the files, EventBridge for routing, Lambda for processing, DynamoDB for state. The stack is defined with AWS SAM.", verify: "Confirm the exact service-to-service flow." },
+      { title: "The architecture", body: "A serverless pipeline on AWS: S3 for the files, EventBridge for routing, Lambda for processing, DynamoDB for state. The stack is defined with AWS SAM." },
       { title: "How uploads come in", body: "Clients upload through presigned URLs, so files go straight into S3, and that upload becomes the trigger for everything downstream." },
-      { title: "How duplicates are caught", body: "Each file's SHA-256 checksum is verified and written to DynamoDB with a conditional write. If that checksum is already recorded, the write fails and the file is treated as a duplicate rather than being processed twice.", verify: "Confirm what happens to a rejected duplicate (rejected outright, or linked to the original?).", note: { hint: "why a conditional write?", more: "DynamoDB checks the condition and writes in one atomic step, so two uploads with the same checksum can't both get through. Checking first and writing second leaves a gap where both could." } },
+      { title: "How duplicates are caught", body: "Each file's SHA-256 checksum is verified and written to DynamoDB with a conditional write. If that checksum is already recorded, the write fails and the file is treated as a duplicate rather than being processed twice.", note: { hint: "why a conditional write?", more: "DynamoDB checks the condition and writes in one atomic step, so two uploads with the same checksum can't both get through. Checking first and writing second leaves a gap where both could." } },
       { title: "How processing is triggered", body: "EventBridge rules fire processing only for uploads that are relevant, so Lambda runs on events rather than on a schedule." },
       { title: "How data is indexed", body: "Separate DynamoDB structures hold files, checksums, tag indexes and subscriptions, so lookups by tag or subscriber don't mean scanning everything." },
       { title: "How services trust each other", body: "The pipeline hands files to the GCP-hosted ML tagging service, authenticating with Cognito machine-to-machine credentials. IAM policies are scoped to least privilege.", note: { hint: "why least privilege?", more: "Each function's policy lists only what it needs, so a mistake or a leaked credential in one place can only reach as far as that one policy allows." } },
@@ -183,16 +183,11 @@ export const projects: Project[] = [
       "Shared integration contracts (contribution, alongside teammates).",
     ],
     placeholders: [
-      { label: "Architecture diagram (final)", size: "1600 × 900", need: "Rafael's own draw.io / Excalidraw export of the real architecture" },
-      { label: "Test run output", size: "1200 × 700", need: "Screenshot of the Moto test suite passing" },
+      { label: "Architecture diagram (final)", size: "1600 × 900", need: "Rafael's own draw.io / Excalidraw export of the real architecture" }
     ],
-    notes: [],
+    notes: ["I learned first-hand how powerful serverless workflows and cloud infrastructure can be if implemented properly."],
     links: {},
-    verify: [
-      "Add project duration (course project, FIT3184?). The resume doesn't give one.",
-      "Mark clearly which parts the wider team built (the diagram currently shows a placeholder 'team services' box).",
-      "Add the GitHub link, if the repository can be public.",
-    ],
+    verify: [],
   },
   {
     id: "happs",
@@ -237,7 +232,7 @@ export const projects: Project[] = [
       { label: "App screens (3–4)", size: "1170 × 2532 each", need: "Real screenshots from the app" },
       { label: "Data model diagram", size: "1600 × 900", need: "Firestore collections and relationships" },
     ],
-    notes: [],
+    notes: ["A major challenge was working with all of the different Apple developer kits, as it was my first time developing an application in Swift. However by studying the documentation well and watching tutorials, it became a fun challenge to myself and I enjoyed building an application from scratch."],
     links: {},
     verify: [],
   },
@@ -282,7 +277,7 @@ export const projects: Project[] = [
       { label: "Detection output", size: "1200 × 800", need: "A real detection frame from the system" },
       { label: "Locust results", size: "1200 × 700", need: "Screenshot of the load-test report" },
     ],
-    notes: [],
+    notes: ["Once again, I learned the importance of building to scale. During development, my initial test results showed a bottleneck which I worked through to achieve a more stable service."],
     links: {},
     verify: [],
   },
@@ -308,53 +303,10 @@ export const projects: Project[] = [
       { label: "App screens (3–4)", size: "1440 × 900 each", need: "coming soon." },
       { label: "Schema diagram", size: "1600 × 900", need: "coming soon." },
     ],
-    notes: [],
+    notes: ["A passion project of mine meant to solve a problem that I face too often: figuring out what to cook for lunch/dinner."],
     links: {},
     verify: [],
-  },
-  // {
-  //   id: "globe",
-  //   number: "05",
-  //   name: "Globe Telecom",
-  //   workingTitle: "AI practitioner internship",
-  //   kind: "experience",
-  //   category: "Professional experience · AI engineering",
-  //   summary:
-  //     "Practical AI automation and internal knowledge work: n8n RAG workflows used by multiple teams, and documentation that helps knowledge travel between them.",
-  //   role: "AI Practitioner Intern",
-  //   duration: "Nov 2025 – Feb 2026",
-  //   ingredients: ["n8n", "rag", "gemini", "notebooklm", "gcp", "load-testing", "communication", "learning"],
-  //   contributions: [
-  //     "Designed and built RAG-based automation workflows in n8n: reusable AI solutions adopted by 2+ cross-functional teams, saving 5+ hours of manual work per week.",
-  //     "Deployed and configured n8n task runners on Google Cloud, resolving infrastructure and configuration issues to restore code-node functionality across 10+ existing production workflows after a platform migration.",
-  //     "Load tested with Apache JMeter at up to 200 concurrent virtual users, finding and fixing reliability and performance bottlenecks ahead of production release.",
-  //     "Used NotebookLM and Gemini Gems to improve process documentation and reduce knowledge silos.",
-  //     "Worked on software integrations.",
-  //   ],
-  //   method: [
-  //     { title: "Template the workflow", body: "n8n RAG workflows built as reusable templates so other teams can start from something working.", note: { hint: "why templates?", more: "A template gives the next team a working starting point instead of a blank canvas, so a good workflow is reused rather than rebuilt." } },
-  //     { title: "Connect to what teams already use", body: "Integrations bring the AI steps into existing tools and processes." },
-  //     { title: "Document as you go", body: "NotebookLM and Gemini Gems turn scattered process knowledge into something people can query." },
-  //     { title: "Keep the platform running", body: "After a platform migration, n8n task runners were deployed and configured on Google Cloud to bring code nodes back across existing production workflows." },
-  //     { title: "Check it before it's live", body: "JMeter load tests, up to 200 concurrent virtual users, ahead of production release." },
-  //   ],
-  //   techniques: [
-  //     { title: "Templates over one-offs", body: "A reusable workflow spreads further than a bespoke one." },
-  //   ],
-  //   deliverables: [
-  //     "n8n RAG and automation templates used by multiple teams.",
-  //     "Process documentation built with NotebookLM and Gemini Gems.",
-  //     "Load-testing preparation ahead of go-live.",
-  //   ],
-  //   placeholders: [
-  //     { label: "Workflow diagram", size: "1600 × 900", need: "coming soon." },
-  //   ],
-  //   notes: [
-  //     "I learned that coming up with a solution that just works is not enough, it needs to be a solution that works well and most importantly at scale."
-  //   ],
-  //   links: {},
-  //   verify: [],
-  // },
+  }
 ];
 
 /* ---------- derived lookups ---------- */

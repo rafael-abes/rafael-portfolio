@@ -30,7 +30,7 @@ export function TableOfContents() {
     <section id="contents" aria-labelledby="contents-title" className="min-h-screen pt-28 pb-24 px-5">
       <div className="mx-auto max-w-4xl">
         <p className="eyebrow">Rafael Abes · Vol. 01</p>
-        <h1 id="contents-title" className="serif text-[clamp(3.2rem,9vw,7rem)] leading-[0.95] mt-4">
+        <h1 id="contents-title" tabIndex={-1} className="outline-none serif text-[clamp(3.2rem,9vw,7rem)] leading-[0.95] mt-4">
           Contents
         </h1>
         <p className="hand text-terra-deep text-2xl mt-3 -rotate-1 inline-block">
@@ -81,6 +81,9 @@ export function TableOfContents() {
           })}
         </ol>
 
+        <p className="hand text-xl text-brown mt-10 max-w-md">
+          Pick recipes as you go. They collect in the tasting menu up in the corner, and turn into a receipt.
+        </p>
       </div>
     </section>
   );

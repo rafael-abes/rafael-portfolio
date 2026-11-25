@@ -79,11 +79,11 @@ export function ChefJourney() {
                   </ul>
                 )}
 
-                {e.recipeId && (
+                {/* {e.recipeId && (
                   <button type="button" onClick={() => openProject(e.recipeId!)} className="eyebrow ulink mt-5">
                     Read this as a recipe
                   </button>
-                )}
+                )} */}
               </div>
             </motion.li>
           ))}

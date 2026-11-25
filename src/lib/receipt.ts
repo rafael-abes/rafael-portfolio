@@ -53,8 +53,7 @@ export function buildReceiptText(projectIds: string[], date: Date): string {
   const projects = chosenProjects(projectIds);
   const rule = "-".repeat(WIDTH);
   const out: string[] = [];
-
-  out.push(centre("A LA RAFAEL"), centre("YOUR PERSONAL TASTING MENU"), "", centre("Rafael Abes - Software engineering"), rule);
+  out.push(centre("Rafael Abes"), centre("YOUR PERSONAL TASTING MENU"), "", centre("Software engineering Portfolio"), rule);
   out.push(formatReceiptDate(date));
   out.push(`Courses: ${projects.length}`, rule);
 
