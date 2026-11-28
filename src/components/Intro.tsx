@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { intro } from "@/src/lib/content";
-import { useBook } from "./book/BookState";
+import { useBook } from "./(book)/BookState";
 import { DraftNote } from "./misc/DraftNote";
 
 export function Intro() {

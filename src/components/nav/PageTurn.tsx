@@ -2,18 +2,23 @@
 
 import { useEffect, useRef } from "react";
 import { animate } from "framer-motion";
-import { chapterTitle } from "@/src/lib/chapters";
-import { useBook } from "../book/BookState";
+import { chapterTitle, chapterPath } from "@/src/lib/chapters";
+import { usePathname } from "next/navigation";
+import { useBook } from "../(book)/BookState";
 
 /**
  * Page-turn transition between chapters: a sheet of paper sweeps across, the
- * scroll jumps while it covers the screen, then it sweeps away. About 0.6s in
+ * route changes while it covers the screen, then it sweeps away once the new page
+ * is in place (or after a short timeout, so it can never get stuck). About 0.6s in
  * total, never blocks clicks, and is skipped entirely under reduced motion
- * (BookState scrolls directly in that case).
+ * (BookState navigates directly in that case).
  */
 export function PageTurn() {
   const { turn, scrollToChapter, finishTurn } = useBook();
   const sheet = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const pathRef = useRef(pathname);
+  pathRef.current = pathname;
 
   useEffect(() => {
     if (!turn || !sheet.current) return;
@@ -25,6 +30,11 @@ export function PageTurn() {
         el.style.visibility = "visible";
         await animate(el, { x: ["100%", "0%"] }, { duration: 0.28, ease: [0.5, 0, 0.2, 1] });
         if (live) scrollToChapter(turn.id);
+        const dest = chapterPath(turn.id);
+        const started = performance.now();
+        while (live && pathRef.current !== dest && performance.now() - started < 1200) {
+          await new Promise((r) => requestAnimationFrame(() => r(null)));
+        }
         await animate(el, { x: ["0%", "-100%"] }, { duration: 0.32, ease: [0.5, 0, 0.2, 1] });
       } finally {
         if (live) {

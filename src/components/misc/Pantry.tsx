@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
 import { categories, ingredientById, ingredientName, ingredients, projectById, projects, projectsFor, SHOW_DRAFT_MARKERS } from "@/src/lib/data";
-import { useBook } from "../book/BookState";
+import { useBook } from "../(book)/BookState";
 
 /** Deterministic tilt so the shelf feels hand-arranged but never jitters between renders. */
 function tiltFor(id: string): number {
@@ -87,12 +87,12 @@ export function Pantry() {
   const relatedIds = new Set(hoverProject ? (projectById.get(hoverProject)?.ingredients ?? []) : []);
 
   return (
-    <section id="pantry" aria-labelledby="pantry-title" className="py-24 px-5 border-t border-rule/40">
+    <section id="pantry" aria-labelledby="pantry-title" className="pt-32 pb-24 px-5">
       <div className="mx-auto max-w-6xl">
         <p className="eyebrow">Chapter 02</p>
-        <h2 id="pantry-title" className="serif text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.95] mt-3">
+        <h1 id="pantry-title" className="serif text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.95] mt-3">
           The pantry
-        </h2>
+        </h1>
         <p className="mt-4 max-w-xl text-brown">
           Everything I cook with. Select an ingredient to see where it’s been used, or pick a few to find the recipes
           that combine them. Hovering over a recipe lights up its ingredients here.
@@ -145,7 +145,7 @@ export function Pantry() {
               return (
                 <div key={cat.id}>
                   <div className="flex items-baseline gap-3 flex-wrap">
-                    <h3 className="serif text-3xl">{cat.name}</h3>
+                    <h2 className="serif text-3xl">{cat.name}</h2>
                     {/* <p className="text-sm text-stone">{cat.blurb}</p> */}
                   </div>
                   <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:flex sm:flex-wrap pb-4 border-b-[3px] border-brown/30">

@@ -57,6 +57,21 @@ export interface Placeholder {
   need: string;
 }
 
+/**
+ * A real image for a recipe's "Finished dish" tab.
+ * Put the file in public/images/recipes/<project id>/ and refer to it from the root: for example
+ * a file at public/images/recipes/ecoguard/test-run.png has src "/images/recipes/ecoguard/test-run.png".
+ * width and height are the file's real pixel size (they reserve space so the page doesn't jump).
+ * alt describes what the image shows, for people who can't see it.
+ */
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+}
+
 export interface Project {
   id: string;
   number: string;
@@ -73,11 +88,14 @@ export interface Project {
   method: MethodStep[];
   techniques: { title: string; body: string }[];
   deliverables: string[];
+  /** Real images, shown in the Finished dish tab. See ProjectImage for where the files go. */
+  images: ProjectImage[];
+  /** Draft-only reminders of which images are still needed. Hidden when SHOW_DRAFT_MARKERS is false. */
   placeholders: Placeholder[];
   /** Chef's notes are Rafael's own reflections: left empty until written. */
   notes: string[];
   links: { github?: string; live?: string };
-  verify: string[] | null | undefined;
+  verify: string[];
 }
 
 export const categories: Category[] = [
@@ -119,7 +137,7 @@ export const ingredients: Ingredient[] = [
 
   // Databases & data
   { id: "dynamodb", name: "DynamoDB", category: "data", represents: "Key-based data modelling for files, checksums, tag indexes and subscriptions." },
-  { id: "firestore", name: "Firestore", category: "data", represents: "Real-time synchronised data.", example: "Used to achieve live friend map sychronisation in Happs." },
+  { id: "firestore", name: "Firestore", category: "data", represents: "Real-time synchronised data for Happs." },
   { id: "postgres", name: "PostgreSQL", category: "data", represents: "Relational storage.", example: "The database behind Little Chef." },
   { id: "data-modelling", name: "Data modelling", category: "data", represents: "Deciding what the tables or documents should look like before writing the code." },
   { id: "ingestion", name: "Data ingestion & processing", category: "data", represents: "Getting files in reliably, once." },
@@ -182,8 +200,10 @@ export const projects: Project[] = [
       "Automated test suite built on Moto.",
       "Shared integration contracts (contribution, alongside teammates).",
     ],
+    images: [],
     placeholders: [
-      { label: "Architecture diagram (final)", size: "1600 × 900", need: "Rafael's own draw.io / Excalidraw export of the real architecture" }
+      { label: "Architecture diagram (final)", size: "1600 × 900", need: "Rafael's own draw.io / Excalidraw export of the real architecture" },
+      { label: "Test run output", size: "1200 × 700", need: "Screenshot of the Moto test suite passing" },
     ],
     notes: ["I learned first-hand how powerful serverless workflows and cloud infrastructure can be if implemented properly."],
     links: {},
@@ -228,6 +248,7 @@ export const projects: Project[] = [
     deliverables: [
       "A working iOS application covering the event lifecycle, social features and AI-assisted event creation.",
     ],
+    images: [],
     placeholders: [
       { label: "App screens (3–4)", size: "1170 × 2532 each", need: "Real screenshots from the app" },
       { label: "Data model diagram", size: "1600 × 900", need: "Firestore collections and relationships" },
@@ -246,7 +267,7 @@ export const projects: Project[] = [
     summary:
       "A computer-vision parking detection system: a YOLO model behind a FastAPI service, containerised and deployed on Google Kubernetes Engine.",
     role: "Inference service and cloud deployment",
-    duration: "2 weeks",
+    duration: "3 weeks",
     ingredients: ["python", "fastapi", "yolo", "ml-inference", "docker", "kubernetes", "gcp", "load-testing", "system-design"],
     contributions: [
       "Developed the FastAPI inference service.",
@@ -272,6 +293,7 @@ export const projects: Project[] = [
       "A deployed, containerised inference system on GKE.",
       "Locust load-test scenarios.",
     ],
+    images: [],
     placeholders: [
       { label: "Deployment diagram", size: "1600 × 900", need: "GKE services, init container and GCS flow" },
       { label: "Detection output", size: "1200 × 800", need: "A real detection frame from the system" },
@@ -288,20 +310,18 @@ export const projects: Project[] = [
     workingTitle: "Node, Express and PostgreSQL",
     kind: "project",
     category: "Backend engineering · Web application",
-    summary: "A web application built on Node, Express and PostgreSQL. Interactive front end built on top of a CRON job web scraper backend, used as a tool to make the process of selecting a recipe to cook easier.",
-    role: "Full stack developer",
+    summary: "A web application built on Node, Express and PostgreSQL.",
+    role: "Not yet written",
     duration: "Ongoing",
     ingredients: ["js-ts", "node", "express", "postgres", "sql", "rest", "data-modelling"],
-    contributions: [
-      "Engineered a full-stack platform in Node.js/Express.js with an automated data pipeline (Cheerio, node-cron), applying clean API design and modular architecture principles",
-      "Designed a fuzzy search feature (pg_trgm, GIN index) for typo-tolerant querying, backed by a RESTful API deployed via Cloudflare and Railway",
-    ],
+    contributions: [],
     method: [],
     techniques: [],
     deliverables: [],
+    images: [],
     placeholders: [
-      { label: "App screens (3–4)", size: "1440 × 900 each", need: "coming soon." },
-      { label: "Schema diagram", size: "1600 × 900", need: "coming soon." },
+      { label: "App screens (3–4)", size: "1440 × 900 each", need: "Real screenshots of Little Chef" },
+      { label: "Schema diagram", size: "1600 × 900", need: "PostgreSQL tables and relationships" },
     ],
     notes: ["A passion project of mine meant to solve a problem that I face too often: figuring out what to cook for lunch/dinner."],
     links: {},

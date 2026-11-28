@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { chapters, isPlainClick } from "@/src/lib/chapters";
-import { useBook } from "../book/BookState";
+import { useBook } from "../(book)/BookState";
 
 export function ChapterNav() {
   const { closeBook, menu, setMenuOpen, goToChapter } = useBook();
-  const [active, setActive] = useState<string>("contents");
+  const pathname = usePathname();
+  const navChapters = chapters.filter((c) => c.nav);
+  const isActive = (href: string) => href.split("#")[0] === pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
   const burger = useRef<HTMLButtonElement>(null);
 
@@ -24,42 +28,29 @@ export function ChapterNav() {
     return () => document.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
-  useEffect(() => {
-    const els = chapters.map((c) => document.getElementById(c.id)).filter((e): e is HTMLElement => !!e);
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-30% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
   return (
     <header className="fixed top-0 inset-x-0 z-40 bg-ivory/90 backdrop-blur border-b border-rule/40">
       <nav aria-label="Chapters" className="mx-auto max-w-6xl px-5 h-14 flex items-center justify-between">
         <button type="button" onClick={closeBook} className="serif italic text-xl ulink whitespace-nowrap" aria-label="Back to the cover">
-          Rafael Abes
+          À la Rafael
         </button>
 
         <ul className="hidden lg:flex gap-7">
-          {chapters.map((c) => (
+          {navChapters.map((c) => (
             <li key={c.id}>
-              <a
-                href={`#${c.id}`}
+              <Link
+                href={c.href}
                 onClick={(e) => {
                   if (!isPlainClick(e)) return;
                   e.preventDefault();
                   goToChapter(c.id);
                 }}
-                aria-current={active === c.id ? "true" : undefined}
-                className={`eyebrow ulink pb-1 ${active === c.id ? "!text-ink" : ""}`}
-                style={active === c.id ? { backgroundSize: "100% 1px" } : undefined}
+                aria-current={isActive(c.href) ? "page" : undefined}
+                className={`eyebrow ulink pb-1 ${isActive(c.href) ? "!text-ink" : ""}`}
+                style={isActive(c.href) ? { backgroundSize: "100% 1px" } : undefined}
               >
                 {c.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -89,21 +80,22 @@ export function ChapterNav() {
 
       {mobileOpen && (
         <ul id="mobile-chapters" className="lg:hidden border-t border-rule/40 bg-ivory px-5 py-3">
-          {chapters.map((c, i) => (
+          {navChapters.map((c, i) => (
             <li key={c.id} className="border-b border-rule/30 last:border-0">
-              <a
-                href={`#${c.id}`}
+              <Link
+                href={c.href}
                 onClick={(e) => {
                   setMobileOpen(false);
                   if (!isPlainClick(e)) return;
                   e.preventDefault();
                   goToChapter(c.id);
                 }}
+                aria-current={isActive(c.href) ? "page" : undefined}
                 className="flex gap-4 items-baseline py-3"
               >
                 <span className="text-xs text-stone tabular-nums">{i === 0 ? "—" : `0${i}`}</span>
                 <span className="serif text-2xl">{c.label}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

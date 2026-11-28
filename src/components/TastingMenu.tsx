@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Download, Printer, X } from "lucide-react";
 import { ingredientName } from "@/src/lib/data";
 import { buildReceiptText, chosenProjects } from "@/src/lib/receipt";
-import { useBook } from "./book/BookState";
+import { useBook } from "./(book)/BookState";
 import { Receipt } from "./misc/Receipt";
 
 type View = "list" | "receipt";

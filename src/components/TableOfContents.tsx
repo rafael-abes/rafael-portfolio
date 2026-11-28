@@ -1,25 +1,24 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { isPlainClick } from "@/src/lib/chapters";
-import { useBook } from "./book/BookState";
+import { chapterById, isPlainClick } from "@/src/lib/chapters";
+import { useBook } from "./(book)/BookState";
 
 interface Entry {
   n: string;
   title: string;
   blurb: string;
-  href?: string;
-  /** Chapters not built yet are shown honestly, not as dead links. */
-  pending?: string;
+  /** Chapter id, resolved to its page in lib/chapters.ts. */
+  id: string;
 }
 
 const entries: Entry[] = [
-  { n: "01", title: "A little introduction", blurb: "Meet Rafael.", href: "#intro" },
-  { n: "02", title: "The pantry", blurb: "The ingredients, technologies and skills behind my work.", href: "#pantry" },
-  { n: "03", title: "The recipes", blurb: "Selected engineering projects.", href: "#recipes" },
-  { n: "04", title: "The experience", blurb: "Professional experience and education.", href: "#journey" },
-  // { n: "05", title: "The chef’s notes", blurb: "Philosophy, interests and reflections.", href: "#notes" },
-  { n: "05", title: "The next course", blurb: "Get in touch.", href: "#contact" },
+  { n: "01", id: "intro", title: "A little introduction", blurb: "Meet Rafael." },
+  { n: "02", id: "pantry", title: "The pantry", blurb: "The ingredients, technologies and skills behind my work." },
+  { n: "03", id: "recipes", title: "The recipes", blurb: "Selected engineering projects." },
+  { n: "04", id: "journey", title: "The experience", blurb: "Professional experience and education." },
+  { n: "05", id: "contact", title: "The next course", blurb: "Get in touch." },
 ];
 
 export function TableOfContents() {
@@ -48,7 +47,7 @@ export function TableOfContents() {
                   </span>
                   <span className="block text-stone text-sm mt-1">{e.blurb}</span>
                 </span>
-                <span className="eyebrow pt-4 shrink-0">{e.href ? "→" : e.pending}</span>
+                <span className="eyebrow pt-4 shrink-0" aria-hidden="true">→</span>
               </>
             );
             return (
@@ -59,23 +58,17 @@ export function TableOfContents() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.08 * i, duration: 0.5, ease: [0.22, 0.7, 0.2, 1] }}
               >
-                {e.href ? (
-                  <a
-                    href={e.href}
-                    onClick={(ev) => {
-                      if (!isPlainClick(ev)) return;
-                      ev.preventDefault();
-                      goToChapter(e.href!.slice(1));
-                    }}
-                    className="group flex gap-4 py-5 hover:bg-paper/70 transition-colors px-2 -mx-2"
-                  >
-                    {inner}
-                  </a>
-                ) : (
-                  <div className="flex gap-4 py-5 px-2 -mx-2 opacity-55" aria-disabled="true">
-                    {inner}
-                  </div>
-                )}
+                <Link
+                  href={chapterById(e.id)?.href ?? "/"}
+                  onClick={(ev) => {
+                    if (!isPlainClick(ev)) return;
+                    ev.preventDefault();
+                    goToChapter(e.id);
+                  }}
+                  className="group flex gap-4 py-5 hover:bg-paper/70 transition-colors px-2 -mx-2"
+                >
+                  {inner}
+                </Link>
               </motion.li>
             );
           })}

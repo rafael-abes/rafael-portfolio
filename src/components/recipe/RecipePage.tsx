@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import { categories, ingredientById, projectById, SHOW_DRAFT_MARKERS, type Project } from "@/src/lib/data";
 import { Annotation } from "../misc/Annotation";
-import { useBook } from "../book/BookState";
+import { useBook } from "../(book)/BookState";
+import Image from "next/image";
 // import { ProjectArchitecture } from "./ProjectArchitecture";
 
 const tabs = [
@@ -112,22 +113,53 @@ function DishTab({ project }: { project: Project }) {
 
       {/* {project.id === "ecoguard" && <ProjectArchitecture />} */}
 
-      <div>
-        <h3 className="eyebrow mb-3">Images needed</h3>
-        <ul className="grid sm:grid-cols-2 gap-4">
-          {project.placeholders.map((ph) => (
-            <li
-              key={ph.label}
-              className="border border-dashed border-rule p-4 bg-paper/60 min-h-[8rem] flex flex-col justify-between"
-            >
-              <p className="serif text-xl leading-tight">{ph.label}</p>
-              <p className="text-xs text-stone mt-3">
-                <span className="tabular-nums">{ph.size}</span> px · {ph.need}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* IMAGES GO HERE. Real images come from `images` in lib/data.ts (files live in
+          public/images/recipes/<project id>/). */}
+      {project.images.length > 0 && (
+        <div>
+          <h3 className="eyebrow mb-3">Gallery</h3>
+          <ul className="grid sm:grid-cols-2 gap-4">
+            {project.images.map((img) => (
+              <li key={img.src}>
+                <figure>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.width}
+                    height={img.height}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="w-full h-auto border border-rule/60 bg-paper"
+                  />
+                  {img.caption && <figcaption className="text-xs text-stone mt-2">{img.caption}</figcaption>}
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {SHOW_DRAFT_MARKERS && project.placeholders.length > 0 && (
+        <div>
+          <h3 className="eyebrow mb-1">Images needed</h3>
+          <p className="text-xs text-stone mb-3">
+            Save each file in <code>public/images/recipes/{project.id}/</code>, then list it under{" "}
+            <code>images</code> for this project in <code>lib/data.ts</code>.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-4">
+            {project.placeholders.map((ph) => (
+              <li
+                key={ph.label}
+                className="border border-dashed border-rule p-4 bg-paper/60 min-h-[8rem] flex flex-col justify-between"
+              >
+                <p className="serif text-xl leading-tight">{ph.label}</p>
+                <p className="text-xs text-stone mt-3">
+                  <span className="tabular-nums">{ph.size}</span> px · {ph.need}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div>
         <h3 className="eyebrow mb-2">Chef’s notes</h3>
@@ -142,7 +174,7 @@ function DishTab({ project }: { project: Project }) {
         )}
       </div>
 
-      {/* {SHOW_DRAFT_MARKERS && project.verify.length > 0 && (
+      {SHOW_DRAFT_MARKERS && project.verify.length > 0 && (
         <div className="border-t border-rule/50 pt-5">
           <h3 className="eyebrow mb-2">To confirm before publishing</h3>
           <ul className="list-disc pl-5 text-sm text-stone space-y-1">
@@ -151,7 +183,7 @@ function DishTab({ project }: { project: Project }) {
             ))}
           </ul>
         </div>
-      )} */}
+      )}
     </div>
   );
 }

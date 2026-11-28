@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ingredientName } from "@/src/lib/data";
 import { education, journey } from "@/src/lib/content";
-import { useBook } from "../book/BookState";
+import { useBook } from "../(book)/BookState";
 import { DraftNote } from "../misc/DraftNote";
 
 export function ChefJourney() {
@@ -16,12 +16,12 @@ export function ChefJourney() {
   };
 
   return (
-    <section id="journey" aria-labelledby="journey-title" className="py-24 px-5 border-t border-rule/40">
+    <section id="journey" aria-labelledby="journey-title" className="pt-32 pb-24 px-5">
       <div className="mx-auto max-w-5xl">
         <p className="eyebrow">04 · The experience</p>
-        <h2 id="journey-title" className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mt-4">
+        <h1 id="journey-title" className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mt-4">
           The chef’s journey.
-        </h2>
+        </h1>
         <p className="mt-4 text-brown max-w-prose">
           Professional experience first, then education. Select a technology to find it in the pantry.
         </p>
@@ -43,7 +43,7 @@ export function ChefJourney() {
               </div>
 
               <div>
-                <h3 className="serif text-4xl leading-tight">{e.org}</h3>
+                <h2 className="serif text-4xl leading-tight">{e.org}</h2>
                 <p className="serif italic text-xl text-brown mt-1">{e.role}</p>
 
                 {e.points.length > 0 && (
@@ -96,7 +96,7 @@ export function ChefJourney() {
             <p className="text-sm text-stone mt-1">{education.place}</p>
           </div>
           <div>
-            <h3 className="serif text-4xl leading-tight">{education.school}</h3>
+            <h2 className="serif text-4xl leading-tight">{education.school}</h2>
             <p className="serif italic text-xl text-brown mt-1">{education.degree}</p>
             <p className="eyebrow mt-5 mb-2">Relevant coursework</p>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-1 text-brown">

@@ -2,18 +2,18 @@
 
 import { Check, Plus } from "lucide-react";
 import { ingredientName, projects } from "@/src/lib/data";
-import { useBook } from "../book/BookState";
+import { useBook } from "../(book)/BookState";
 
 export function RecipeCollection() {
   const { selected, matchingProjectIds, setHoverProject, openProject, menu, addToMenu, removeFromMenu } = useBook();
 
   return (
-    <section id="recipes" aria-labelledby="recipes-title" className="py-24 px-5 border-t border-rule/40">
+    <section id="recipes" aria-labelledby="recipes-title" className="pt-32 pb-24 px-5">
       <div className="mx-auto max-w-6xl">
         <p className="eyebrow">Chapter 03</p>
-        <h2 id="recipes-title" className="serif text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.95] mt-3">
+        <h1 id="recipes-title" className="serif text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.95] mt-3">
           The recipes
-        </h2>
+        </h1>
         <p className="mt-4 max-w-xl text-brown">
           Selected engineering projects, written up as recipes: ingredients, method, and the finished dish. Add the ones
           that interest you to your tasting menu.
@@ -40,11 +40,11 @@ export function RecipeCollection() {
                     <p className="eyebrow">
                       {p.kind === "experience" ? "Experience" : "Recipe"} · {p.category}
                     </p>
-                    <h3 className="serif text-[clamp(2.2rem,5vw,3.6rem)] leading-[1] mt-2">
+                    <h2 className="serif text-[clamp(2.2rem,5vw,3.6rem)] leading-[1] mt-2">
                       <button type="button" onClick={() => openProject(p.id)} className="text-left ulink">
                         {p.name}
                       </button>
-                    </h3>
+                    </h2>
                     {p.workingTitle && <p className="serif italic text-xl text-brown mt-1">{p.workingTitle}</p>}
                     <p className="mt-3 text-brown max-w-xl">{p.summary}</p>
                     {selected.length > 0 && !matches && (

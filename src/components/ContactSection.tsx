@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { SHOW_DRAFT_MARKERS } from "@/src/lib/data";
 import { contact, contactLabels, type Contact } from "@/src/lib/contact";
 import { contactCopy } from "@/src/lib/content";
-import { useBook } from "./book/BookState";
+import { useBook } from "./(book)/BookState";
 import { DraftNote } from "./misc/DraftNote";
 
 /** Turn a stored value into a link. Email becomes mailto:, bare domains get https://. */
@@ -18,12 +18,12 @@ export function ContactSection() {
   const keys = Object.keys(contactLabels) as (keyof Contact)[];
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="py-24 px-5 border-t border-rule/40">
+    <section id="contact" aria-labelledby="contact-title" className="pt-32 pb-24 px-5">
       <div className="mx-auto max-w-5xl">
-        <p className="eyebrow">06 · The next course</p>
-        <h2 id="contact-title" className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mt-4">
+        <p className="eyebrow">05 · The next course</p>
+        <h1 id="contact-title" className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mt-4">
           {contactCopy.heading}
-        </h2>
+        </h1>
         <p className="mt-4 text-lg text-brown max-w-prose">{contactCopy.body}</p>
 
         <ul className="mt-12 border-t border-rule/50">

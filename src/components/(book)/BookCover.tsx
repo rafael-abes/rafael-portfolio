@@ -112,8 +112,8 @@ export function BookCover() {
               </span>
 
               <span className="mt-6 block">
-                <span className="block eyebrow !text-ivory/80 tracking-[0.5em]">À LA</span>
                 <span className="serif block text-[4.6rem] leading-[0.9] italic -ml-1">Rafael</span>
+                <span className="block eyebrow !text-ivory/80 tracking-[0.5em]">Abes</span>
               </span>
 
               <span className="mt-5 mx-auto w-[58%] aspect-square block opacity-95">

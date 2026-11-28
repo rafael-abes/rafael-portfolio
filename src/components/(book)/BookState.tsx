@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { chapterById } from "@/src/lib/chapters";
 import { projectsMatching } from "@/src/lib/data";
 
 type Phase = "closed" | "open";
@@ -65,9 +67,15 @@ function safeSet(key: string, value: string) {
 
 export function BookStateProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
-  const [phase, setPhase] = useState<Phase>("closed");
-  const [selected, setSelected] = useState<string[]>([]);
-  const [focusedIngredient, setFocusedIngredient] = useState<string | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const pathRef = useRef(pathname);
+  pathRef.current = pathname;
+  // The cover belongs to the home page. Landing straight on another page (a shared link to
+  // /pantry, say) starts with the book already open.
+  const [phase, setPhase] = useState<Phase>(pathname === "/" ? "closed" : "open");
+  const [sel, setSel] = useState<{ selected: string[]; focused: string | null }>({ selected: [], focused: null });
+  const { selected, focused: focusedIngredient } = sel;
   const [hoverProject, setHoverProject] = useState<string | null>(null);
   const [openProjectId, setOpenProjectId] = useState<string | null>(null);
   const [menu, setMenu] = useState<string[]>([]);
@@ -102,19 +110,38 @@ export function BookStateProvider({ children }: { children: React.ReactNode }) {
     setMenuOpen(false);
     setOpenProjectId(null);
     setPhase("closed");
-    window.scrollTo({ top: 0 });
-  }, []);
+    // Returning visitors have the cover hidden by CSS before first paint; bring it back for this.
+    delete document.documentElement.dataset.returning;
+    if (pathRef.current !== "/") router.push("/");
+    else window.scrollTo({ top: 0, behavior: "instant" });
+  }, [router]);
 
-  const scrollToChapter = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "auto", block: "start" });
-    try {
-      window.history.replaceState(null, "", `#${id}`);
-    } catch {
-      /* some embedded contexts forbid this: the scroll still happened */
-    }
-  }, []);
+  /**
+   * Go to a chapter now. Chapters are separate pages, so this changes route; within the home page
+   * (the intro anchor) it just scrolls. "instant", not "auto": the page has CSS smooth scrolling.
+   */
+  const scrollToChapter = useCallback(
+    (id: string) => {
+      const c = chapterById(id);
+      if (!c) return;
+      const [path, hash] = c.href.split("#");
+      if (path === pathRef.current) {
+        if (hash) {
+          document.getElementById(hash)?.scrollIntoView({ behavior: "instant", block: "start" });
+          try {
+            window.history.replaceState(null, "", `#${hash}`);
+          } catch {
+            /* some embedded contexts forbid this: the scroll still happened */
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: "instant" });
+        }
+      } else {
+        router.push(c.href);
+      }
+    },
+    [router],
+  );
 
   const goToChapter = useCallback(
     (id: string) => {
@@ -135,18 +162,33 @@ export function BookStateProvider({ children }: { children: React.ReactNode }) {
     setTurn(null);
   }, []);
 
+  // Selection and the card's focus change together, so they can never disagree.
+  // Selecting an ingredient shows its card. Deselecting one that the card is showing hands the
+  // card to the most recently selected ingredient that is still selected (or closes it if none).
   const toggleIngredient = useCallback((id: string) => {
-    setSelected((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
-    setFocusedIngredient(id);
+    setSel((cur) => {
+      if (!cur.selected.includes(id)) {
+        return { selected: [...cur.selected, id], focused: id };
+      }
+      const selected = cur.selected.filter((x) => x !== id);
+      const focused =
+        cur.focused === id || (cur.focused && !selected.includes(cur.focused))
+          ? (selected[selected.length - 1] ?? null)
+          : cur.focused;
+      return { selected, focused };
+    });
   }, []);
   const selectIngredient = useCallback((id: string) => {
-    setSelected((cur) => (cur.includes(id) ? cur : [...cur, id]));
-    setFocusedIngredient(id);
+    setSel((cur) => ({
+      selected: cur.selected.includes(id) ? cur.selected : [...cur.selected, id],
+      focused: id,
+    }));
   }, []);
-  const clearIngredients = useCallback(() => {
-    setSelected([]);
-    setFocusedIngredient(null);
-  }, []);
+  const clearIngredients = useCallback(() => setSel({ selected: [], focused: null }), []);
+  const setFocusedIngredient = useCallback(
+    (id: string | null) => setSel((cur) => ({ ...cur, focused: id })),
+    [],
+  );
 
   const addToMenu = useCallback((id: string) => setMenu((cur) => (cur.includes(id) ? cur : [...cur, id])), []);
   const removeFromMenu = useCallback((id: string) => setMenu((cur) => cur.filter((x) => x !== id)), []);
